@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ferdi Kurniawan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #0a0d10;
+  --accent: #00fff5;
+  --text-light: #e8e8e8;
+  --text-dim: #aaaaaa;
+}
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+
+body {
+  background: radial-gradient(circle at center, #0a0d10 0%, #000 100%);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+}
+
+/* 🌌 Aurora Background */
+.aurora {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at 30% 40%, rgba(0,255,255,0.25) 0%, transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(255,0,150,0.25) 0%, transparent 60%),
+              radial-gradient(circle at 50% 80%, rgba(0,150,255,0.2) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: auroraFlow 20s ease-in-out infinite alternate;
+  z-index: 0;
+}
+@keyframes auroraFlow {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.6; }
+  50% { transform: rotate(10deg) scale(1.1); opacity: 0.8; }
+  100% { transform: rotate(-10deg) scale(1.05); opacity: 0.6; }
+}
+
+/* ⚙️ Gear besar */
+.large-gears {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.large-gear {
+  position: absolute;
+  color: var(--accent);
+  font-size: 150px;
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+.large-gear.fast-spin {
+  animation: fastSpin 0.2s linear infinite;
+}
+@keyframes fastSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 🌠 Meteor */
+.meteor {
+  position: absolute;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(0,255,245,1), transparent);
+  border-radius: 2px;
+  opacity: 0;
+  transform: rotate(45deg);
+  z-index: 3;
+  pointer-events: none;
+}
+@keyframes meteorMove {
+  0% { transform: translate(0,0) rotate(45deg); opacity: 1; }
+  100% { transform: translate(200px,200px) rotate(45deg); opacity: 0; }
+}
+
+/* 🪐 Card Profil */
+.card {
+  position: relative;
+  background: linear-gradient(145deg, #14181d, #1b2026);
+  border: 1px solid rgba(0,255,245,0.25);
+  box-shadow: inset 0 0 10px rgba(0,255,245,0.2), 0 0 25px rgba(0,255,245,0.15);
+  border-radius: 20px;
+  padding: 35px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: inset 0 0 15px rgba(0,255,245,0.4), 0 0 35px rgba(0,255,245,0.4);
+  transform: translateY(-5px);
+}
+.profile-img {
+  width: 130px; height: 130px; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--accent);
+  margin-bottom: 15px; box-shadow: 0 0 15px rgba(0,255,245,0.7);
+  transition: all 0.4s ease;
+}
+.profile-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0,255,245,1);
+}
+h1 {
+  color: var(--accent);
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(0,255,245,0.5);
+}
+.tagline {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: 15px;
+  text-decoration: underline;
+} 
+.intro {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
+
+/* 🔗 Sosial Media */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.social-links a {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(0,255,245,0.3);
+  font-size: 22px;
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(0,255,245,0.25);
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 0 20px rgba(0,255,245,0.6);
+  border-color: var(--accent);
+}
+
+/* 📱 Responsif */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .card { padding: 25px; max-width: 90%; }
+  .profile-img { width: 110px; height: 110px; }
+  h1 { font-size: 20px; }
+  .tagline { font-size: 12px; }
+  .intro { font-size: 13px; }
+  .social-links a {
+    width: 42px; height: 42px; font-size: 18px;
+  }
+  .large-gear { font-size: 80px; opacity: 0.4; }
+  .aurora { filter: blur(60px); }
+}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="large-gears" id="large-gears"></div>
+
+<!-- 💫 Card Profil -->
+<div class="card" id="card">
+  <img src="profilee.jpg" alt="Foto Ferdi" class="profile-img">
+  <h1>Ferdi Kurniawan</h1>
+  <p class="tagline">tidak ada opsi menyerah, selagi mata masih terbuka</p>
+  <p class="intro">Mari bersilaturahmi melalui platform berikut:</p>
+  <div class="social-links">
+    <a href="https://instagram.com/ferdi_krn" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1AMM84PcMx/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://wa.me/+6285664715402" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://youtube.com/@ferdikurniawan-k3d?si=HvmAddGiNUMtGCv6" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</div>
+
+<script>
+/* ⚙️ Buat gear besar */
+const largeGearsContainer = document.getElementById('large-gears');
+const largeGearPositions = [
+  { top: '10%', left: '10%' },
+  { top: '10%', right: '10%' },
+  { bottom: '10%', left: '10%' },
+  { bottom: '10%', right: '10%' }
+];
+largeGearPositions.forEach(pos => {
+  const gear = document.createElement('div');
+  gear.classList.add('large-gear');
+  gear.textContent = '⚙️';
+  Object.assign(gear.style, pos);
+  largeGearsContainer.appendChild(gear);
+});
+
+/* 🌠 Meteor hanya di dalam card */
+function createMeteor(x, y, card) {
+  const meteor = document.createElement('div');
+  meteor.classList.add('meteor');
+  const rect = card.getBoundingClientRect();
+  const relX = x - rect.left;
+  const relY = y - rect.top;
+  meteor.style.left = `${relX}px`;
+  meteor.style.top = `${relY}px`;
+  card.appendChild(meteor);
+  meteor.style.animation = 'meteorMove 1s linear forwards';
+  meteor.style.opacity = 1;
+  setTimeout(() => meteor.remove(), 1000);
+}
+
+const card = document.getElementById('card');
+let meteorCooldown = false;
+card.addEventListener('mousemove', (e) => {
+  const chance = Math.random();
+  if (!meteorCooldown && chance > 0.85) {
+    createMeteor(e.clientX, e.clientY, card);
+    meteorCooldown = true;
+    setTimeout(() => meteorCooldown = false, 400);
+  }
+});
+
+/* 🔄 Gear berputar saat kursor mendekati card */
+document.addEventListener('mousemove', (e) => {
+  const cardRect = card.getBoundingClientRect();
+  const cardCenterX = cardRect.left + cardRect.width / 2;
+  const cardCenterY = cardRect.top + cardRect.height / 2;
+  const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY);
+  const threshold = 220;
+
+  document.querySelectorAll('.large-gear').forEach(gear => {
+    if (distance < threshold) {
+      gear.classList.add('fast-spin');
+      gear.style.opacity = 1;
+    } else {
+      gear.classList.remove('fast-spin');
+      gear.style.opacity = 0.6;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
